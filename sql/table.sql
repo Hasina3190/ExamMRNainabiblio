@@ -1,0 +1,35 @@
+CREATE DATABASE exambiblio;
+use exambiblio;
+
+CREATE TABLE bibliothecaire (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    mot_de_passe VARCHAR(255)
+);
+CREATE TABLE type_adherant (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    libelle VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE adherant (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100),
+    email VARCHAR(100) UNIQUE NOT NULL,
+    adresse VARCHAR(255),
+    telephone VARCHAR(20),
+    mot_de_passe VARCHAR(255) NOT NULL,
+    type_id INT NOT NULL,
+    FOREIGN KEY (type_id) REFERENCES type_adherant(id)
+);
+
+CREATE TABLE abonnement (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    date_debut DATE NOT NULL,
+    date_fin DATE NOT NULL,
+    adherant_id BIGINT NOT NULL,
+    FOREIGN KEY (adherant_id) REFERENCES adherant(id)
+);
+
