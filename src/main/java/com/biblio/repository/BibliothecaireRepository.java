@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface BibliothecaireRepository extends JpaRepository<BibliothecaireModel, Long> {
     // Pour plus tard : trouver par email pour l'authentification
     BibliothecaireModel findByEmail(String email);
+    BibliothecaireModel findByEmailAndMotDePasse(String email, String motDePasse);
 }

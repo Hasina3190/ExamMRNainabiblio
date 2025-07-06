@@ -33,4 +33,9 @@ public class AdherantService {
     public Optional<AdherantModel> findById(Long adherantId){
         return adherantRepository.findById(adherantId);
     }
+
+    public AdherantModel findByEmailAndMotDePasse(String email, String motDePasse) {
+        return adherantRepository.findByEmailAndMotDePasse(email, motDePasse);
+    }
+
 }

@@ -13,12 +13,16 @@ public class ExemplaireService {
     @Autowired
     private ExemplaireRepository exemplaireRepository;
 
-    public List<ExemplaireModel> getAll() {
+    public List<ExemplaireModel> findAll() {
         return exemplaireRepository.findAll();
     }
 
-    public List<ExemplaireModel> getByLivreId(Long livreId) {
+    public List<ExemplaireModel> findByLivreId(Long livreId) {
         return exemplaireRepository.findByLivreId(livreId);
+    }
+
+    public ExemplaireModel findByExemplaireId(Long exemplaireId) {
+        return exemplaireRepository.findById(exemplaireId).orElse(null);
     }
 
     public ExemplaireModel save(ExemplaireModel exemplaire) {

@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ExemplaireRepository extends JpaRepository<ExemplaireModel, Long> {
-    List<ExemplaireModel> findByLivreId(Long livreId); // Pour lister les exemplaires d’un livre
+    List<ExemplaireModel> findByLivreId(Long livreId); 
 }

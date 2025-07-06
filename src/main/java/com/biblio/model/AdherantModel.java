@@ -19,7 +19,9 @@ public class AdherantModel {
     private String email;
     private String adresse;
     private String telephone;
-    private String mot_de_passe;
+
+    @Column(name = "mot_de_passe")
+    private String motDePasse;
 
     @ManyToOne
     @JoinColumn(name = "type_id", nullable = false)

@@ -3,24 +3,17 @@ package com.biblio.model;
 import javax.persistence.*;
 import lombok.*;
 
+@Entity
+@Table(name = "type_pret")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "bibliothecaire")
-public class BibliothecaireModel {
+public class TypePretModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nom;
-    private String prenom;
-
     @Column(unique = true, nullable = false)
-    private String email;
-
-    @Column(name = "mot_de_passe", nullable = false)
-    private String motDePasse;
-
+    private String libelle;
 }

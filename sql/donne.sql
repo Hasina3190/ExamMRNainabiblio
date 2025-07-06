@@ -87,3 +87,12 @@ INSERT INTO exemplaire (numero_exemplaire, etat, disponible, livre_id) VALUES
 ('EX028-A', 'use', TRUE, 28), ('EX028-B', 'neuf', TRUE, 28),
 ('EX029-A', 'neuf', TRUE, 29), ('EX029-B', 'bon', TRUE, 29),
 ('EX030-A', 'neuf', TRUE, 30), ('EX030-B', 'use', TRUE, 30);
+
+---
+INSERT INTO type_pret (libelle) VALUES ('domicile'), ('sur place');
+
+INSERT INTO gestion_pret (adherant_id, nombre_max) VALUES
+(1, 3),  
+(2, 5),  
+(3, 2),  
+(4, 1);  

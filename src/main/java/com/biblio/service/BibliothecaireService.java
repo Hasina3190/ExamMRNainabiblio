@@ -32,4 +32,9 @@ public class BibliothecaireService {
     public void delete(Long id) {
         bibliothecaireRepository.deleteById(id);
     }
+
+    public BibliothecaireModel findByEmailAndMotDePasse(String email, String motDePasse) {
+        return bibliothecaireRepository.findByEmailAndMotDePasse(email, motDePasse);
+    }
+
 }
