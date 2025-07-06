@@ -10,7 +10,7 @@
         <div class="nav">
             <ul>
                 <li><a href="#${pageContext.request.ContextPath}">Dashbord</a></li>
-                <li><a href="#${pageContext.request.ContextPath}">Abonnement</a></li>
+                <li><a href="#${pageContext.request.ContextPath}/abonnement">Abonnement</a></li>
                 <li><a href="#${pageContext.request.ContextPath}">Reservation</a></li>
                 <li><a href="#${pageContext.request.ContextPath}">Pret</a></li>
                 <li><a href="#${pageContext.request.ContextPath}">Prolongement</a></li>
