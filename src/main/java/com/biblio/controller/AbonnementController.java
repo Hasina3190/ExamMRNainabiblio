@@ -1,10 +1,10 @@
 package com.biblio.controller;
-// package com.biblio.controller;
 
 import com.biblio.model.AbonnementModel;
 import com.biblio.model.AdherantModel;
-import com.biblio.repository.AdherantRepository;
 import com.biblio.service.AbonnementService;
+import com.biblio.service.AdherantService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -20,13 +20,13 @@ public class AbonnementController {
 
     @Autowired
     private AbonnementService abonnementService;
-
+    
     @Autowired
-    private AdherantRepository adherantRepository;
+    private AdherantService adherantService;
 
     @GetMapping("/form")
     public String formAbonnement(Model model) {
-        model.addAttribute("adherants", adherantRepository.findAll());
+        model.addAttribute("adherants", adherantService.findAllAdherant());
         return "abonnement/form"; // Vue Thymeleaf
     }
 
@@ -37,7 +37,7 @@ public class AbonnementController {
         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFin,
         Model model) {
 
-        Optional<AdherantModel> adherantOpt = adherantRepository.findById(adherantId);
+        Optional<AdherantModel> adherantOpt = adherantService.findById(adherantId);
 
         if (adherantOpt.isPresent()) {
             if (abonnementService.aUnChevauchement(adherantId, dateDebut, dateFin)) {
@@ -51,7 +51,7 @@ public class AbonnementController {
             model.addAttribute("message", "Adhérant introuvable.");
         }
 
-        model.addAttribute("adherants", adherantRepository.findAll());
-        return "abonnement/form";
+        model.addAttribute("adherants", adherantService.findAllAdherant());
+        return "redirect:/abonnement/form";
     }
 }

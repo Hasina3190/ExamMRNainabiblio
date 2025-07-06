@@ -33,3 +33,29 @@ CREATE TABLE abonnement (
     FOREIGN KEY (adherant_id) REFERENCES adherant(id)
 );
 
+--**
+CREATE TABLE genre (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    libelle VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE livre (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    titre VARCHAR(255) NOT NULL,
+    auteur VARCHAR(255),
+    langue VARCHAR(100),
+    accessibilite INT,
+    annee_publication INT,
+    genre_id BIGINT,
+    FOREIGN KEY (genre_id) REFERENCES genre(id)
+);
+
+
+CREATE TABLE exemplaire (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    numero_exemplaire VARCHAR(100) UNIQUE NOT NULL,
+    etat VARCHAR(100),
+    disponible BOOLEAN DEFAULT TRUE,
+    livre_id BIGINT NOT NULL,
+    FOREIGN KEY (livre_id) REFERENCES livre(id)
+);

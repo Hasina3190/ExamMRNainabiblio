@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdherantService {
@@ -13,19 +14,23 @@ public class AdherantService {
     @Autowired
     private AdherantRepository adherantRepository;
 
-    public List<AdherantModel> getAll() {
+    public List<AdherantModel> findAllAdherant() {
         return adherantRepository.findAll();
     }
 
-    public AdherantModel getById(Long id) {
+    public AdherantModel findAdherantById(Long id) {
         return adherantRepository.findById(id).orElse(null);
     }
 
-    public AdherantModel save(AdherantModel adherant) {
+    public AdherantModel saveAdherant(AdherantModel adherant) {
         return adherantRepository.save(adherant);
     }
 
-    public void delete(Long id) {
+    public void deleteAdherant(Long id) {
         adherantRepository.deleteById(id);
+    }
+
+    public Optional<AdherantModel> findById(Long adherantId){
+        return adherantRepository.findById(adherantId);
     }
 }
