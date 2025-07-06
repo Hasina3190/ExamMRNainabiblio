@@ -87,3 +87,10 @@ INSERT INTO exemplaire (numero_exemplaire, etat, disponible, livre_id) VALUES
 ('EX028-A', 'use', TRUE, 28), ('EX028-B', 'neuf', TRUE, 28),
 ('EX029-A', 'neuf', TRUE, 29), ('EX029-B', 'bon', TRUE, 29),
 ('EX030-A', 'neuf', TRUE, 30), ('EX030-B', 'use', TRUE, 30);
+
+
+INSERT INTO penaliter (adherant_id, nombre_jour) VALUES
+(1, 5),
+(2, 10),
+(3, 3),
+(4, 7); 

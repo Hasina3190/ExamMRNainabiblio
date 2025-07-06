@@ -59,3 +59,31 @@ CREATE TABLE exemplaire (
     livre_id BIGINT NOT NULL,
     FOREIGN KEY (livre_id) REFERENCES livre(id)
 );
+
+---
+CREATE TABLE penaliter (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    adherant_id BIGINT NOT NULL,
+    nombre_jour INT NOT NULL,
+    FOREIGN KEY (adherant_id) REFERENCES adherant(id)
+);
+
+----
+CREATE TABLE pret (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    adherant_id BIGINT NOT NULL,
+    exemplaire_id BIGINT NOT NULL,
+    date_pret DATE NOT NULL,
+    date_retour DATE NOT NULL,
+    date_effective_retour DATE,
+    FOREIGN KEY (adherant_id) REFERENCES adherant(id),
+    FOREIGN KEY (exemplaire_id) REFERENCES exemplaire(id)
+);
+
+CREATE TABLE rendu (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    pret_id BIGINT NOT NULL,
+    date_rendu DATE NOT NULL,
+
+    FOREIGN KEY (pret_id) REFERENCES pret(id)
+);
