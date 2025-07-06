@@ -59,28 +59,3 @@ CREATE TABLE exemplaire (
     livre_id BIGINT NOT NULL,
     FOREIGN KEY (livre_id) REFERENCES livre(id)
 );
-----
-CREATE TABLE type_pret (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    libelle VARCHAR(50) NOT NULL UNIQUE
-);
-
-CREATE TABLE gestion_pret (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    adherant_id BIGINT NOT NULL,
-    nombre_max INT NOT NULL,
-    FOREIGN KEY (adherant_id) REFERENCES adherant(id),
-    UNIQUE(adherant_id)
-);
-CREATE TABLE pret (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    adherant_id BIGINT NOT NULL,
-    exemplaire_id BIGINT NOT NULL,
-    date_pret DATE NOT NULL,
-    date_retour DATE NOT NULL,
-    date_effective_retour DATE,
-    type_pret_id BIGINT NOT NULL,
-    FOREIGN KEY (adherant_id) REFERENCES adherant(id),
-    FOREIGN KEY (exemplaire_id) REFERENCES exemplaire(id),
-    FOREIGN KEY (type_pret_id) REFERENCES type_pret(id)
-);
